@@ -21,7 +21,7 @@ const GEN_STATUSES = [
 
 function parsePlan(text) {
   const welcome = (text.match(/WELCOME:\s*([\s\S]*?)(?=DIET PLAN:|$)/i)?.[1] || '').trim()
-  const diet    = (text.match(/DIET PLAN:\s*([\s\S]*?)(?=WORKOUT PLAN:|$)/i)?.[1] || '').trim()
+  const diet = (text.match(/DIET PLAN:\s*([\s\S]*?)(?=WORKOUT PLAN:|$)/i)?.[1] || '').trim()
   const workout = (text.match(/WORKOUT PLAN:\s*([\s\S]*?)$/i)?.[1] || '').trim()
   return { welcome, diet, workout }
 }
@@ -39,9 +39,8 @@ export default function App() {
   const generate = async () => {
     setLoading(true)
     setError('')
-    setStep(4) // generating screen
+    setStep(4)
 
-    // Cycle through status messages
     let i = 0
     setGenStatus(GEN_STATUSES[0])
     const iv = setInterval(() => {
@@ -50,7 +49,7 @@ export default function App() {
     }, 1800)
 
     try {
-      const res = const res = await fetch('https://gym-ai-5sbs.onrender.com/api/generate-plan', {
+      const res = await fetch('https://gym-ai-5sbs.onrender.com/api/generate-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -61,7 +60,7 @@ export default function App() {
       setStep(5)
     } catch (err) {
       setError(err.message)
-      setStep(3) // go back so they can retry
+      setStep(3)
     } finally {
       clearInterval(iv)
       setLoading(false)
@@ -78,9 +77,7 @@ export default function App() {
   return (
     <div className="card">
       <div className="gym-logo">⚡ FitZone</div>
-
       {step < 4 && <StepIndicator current={step} total={3} />}
-
       {step === 1 && (
         <StepDetails data={data} onChange={update} onNext={() => setStep(2)} />
       )}
@@ -92,7 +89,7 @@ export default function App() {
           <StepFitness data={data} onChange={update} onSubmit={generate} onBack={() => setStep(2)} loading={loading} />
           {error && (
             <p style={{ marginTop: '1rem', fontSize: 13, color: '#dc2626', background: '#fef2f2', padding: '10px 14px', borderRadius: 8 }}>
-              ⚠️ {error} — please try again.
+              {error} — please try again.
             </p>
           )}
         </>
