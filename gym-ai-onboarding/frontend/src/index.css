@@ -1,0 +1,213 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.gym-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4F46E5;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+/* Step indicator */
+.steps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1.75rem;
+}
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  border: 2px solid #e0e0e0;
+  color: #aaa;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.step-dot.active { background: #4F46E5; border-color: #4F46E5; color: #fff; }
+.step-dot.done { background: #10B981; border-color: #10B981; color: #fff; }
+.step-line { flex: 1; height: 2px; background: #e0e0e0; border-radius: 1px; }
+.step-line.done { background: #10B981; }
+
+/* Form elements */
+h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { font-size: 14px; color: #666; margin-bottom: 1.5rem; line-height: 1.5; }
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 1.25rem;
+}
+label:first-of-type { margin-top: 0; }
+
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fafafa;
+}
+input:focus { border-color: #4F46E5; background: #fff; }
+
+.opt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.opt-btn {
+  padding: 10px 10px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  background: #fafafa;
+  color: #444;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.opt-btn:hover { border-color: #4F46E5; color: #4F46E5; background: #f0f0ff; }
+.opt-btn.selected { background: #EEF2FF; border-color: #4F46E5; color: #4F46E5; font-weight: 600; }
+
+.btn-primary {
+  margin-top: 1.75rem;
+  width: 100%;
+  padding: 13px;
+  background: #4F46E5;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-primary:hover:not(:disabled) { background: #3730A3; }
+.btn-primary:disabled { background: #c7c7c7; cursor: not-allowed; }
+
+.btn-secondary {
+  margin-top: 0.75rem;
+  width: 100%;
+  padding: 11px;
+  background: transparent;
+  color: #666;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-secondary:hover { border-color: #aaa; color: #333; }
+
+/* Generating screen */
+.generating {
+  text-align: center;
+  padding: 1rem 0;
+}
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #EEF2FF;
+  border-top-color: #4F46E5;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto 1.25rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.gen-status { font-size: 14px; color: #666; margin-top: 0.5rem; }
+
+/* Plan result */
+.plan-section {
+  margin-bottom: 1.25rem;
+}
+.plan-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #4F46E5;
+  margin-bottom: 8px;
+}
+.plan-content {
+  background: #f8f8ff;
+  border: 1px solid #e8e8f8;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 13.5px;
+  line-height: 1.75;
+  color: #333;
+  white-space: pre-wrap;
+}
+
+.welcome-box {
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 99px;
+  margin-bottom: 1rem;
+}
+.badge-green { background: #D1FAE5; color: #065F46; }
+
+.divider {
+  height: 1px;
+  background: #f0f0f0;
+  margin: 1.25rem 0;
+}
+
+.restart-btn {
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+.restart-btn:hover { color: #4F46E5; }
