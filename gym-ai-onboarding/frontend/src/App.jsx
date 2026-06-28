@@ -50,7 +50,7 @@ export default function App() {
     }, 1800)
 
     try {
-      const res = await fetch('/api/generate-plan', {
+      const res = const res = await fetch('https://gym-ai-5sbs.onrender.com/api/generate-plan', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
