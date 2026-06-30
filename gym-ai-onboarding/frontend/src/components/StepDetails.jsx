@@ -15,7 +15,7 @@ const GENDER_OPTIONS = [
 ]
 
 export default function StepDetails({ data, onChange, onNext }) {
-  const isValid = data.name.trim() && data.age && data.gender
+  const isValid = data.name.trim() && data.phone.trim() && data.age && data.gender
 
   return (
     <>
@@ -29,6 +29,14 @@ export default function StepDetails({ data, onChange, onNext }) {
         value={data.name}
         onChange={(e) => onChange('name', e.target.value)}
         autoFocus
+      />
+
+      <label>WhatsApp number</label>
+      <input
+        type="tel"
+        placeholder="e.g. 9876543210"
+        value={data.phone}
+        onChange={(e) => onChange('phone', e.target.value)}
       />
 
       <label>Age group</label>

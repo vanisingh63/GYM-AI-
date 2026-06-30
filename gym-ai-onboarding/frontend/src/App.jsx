@@ -6,7 +6,7 @@ import StepFitness from './components/StepFitness'
 import PlanResult from './components/PlanResult'
 
 const INITIAL_DATA = {
-  name: '', age: '', gender: '',
+  name: '', phone: '', age: '', gender: '',
   goal: '', food: '', allergies: '',
   level: '', days: '', injuries: '',
 }
@@ -49,7 +49,7 @@ export default function App() {
     }, 1800)
 
     try {
-      const res = await fetch('https://gym-ai-5sbs.onrender.com/api/generate-plan', {
+      const res = await fetch('https://gym-ai-5sbs.onrender.com/api/generate-plan-whatsapp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
